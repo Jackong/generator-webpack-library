@@ -8,6 +8,7 @@ module.exports = yeoman.generators.Base.extend({
     this.log(yosay(
       'Welcome to the sweet ' + chalk.red('WebpackLibrary') + ' generator!'
     ));
+    this.appname = this.appname.replace(' ', '-')
   },
 
   writing: {
