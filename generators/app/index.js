@@ -22,10 +22,6 @@ module.exports = yeoman.generators.Base.extend({
             email: this.user.git.email()
         }
       );
-      this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
-      );
     },
     gulp: function() {
         this.fs.copy(
@@ -42,14 +38,34 @@ module.exports = yeoman.generators.Base.extend({
             }
         )
     },
+    babel: function() {
+      this.fs.copy(
+        this.templatePath('babelrc'),
+        this.destinationPath('.babelrc')
+      );
+    },
     projectfiles: function () {
       this.fs.copy(
         this.templatePath('editorconfig'),
         this.destinationPath('.editorconfig')
       );
       this.fs.copy(
-        this.templatePath('jshintrc'),
-        this.destinationPath('.jshintrc')
+        this.templatePath('eslintrc'),
+        this.destinationPath('.eslintrc')
+      );
+      this.fs.copy(
+        this.templatePath('gitignore'),
+        this.destinationPath('.gitignore')
+      );
+      this.fs.copy(
+        this.templatePath('npmignore'),
+        this.destinationPath('.npmignore')
+      );
+    },
+    src: function() {
+      this.fs.copy(
+        this.templatePath('src'),
+        this.destinationPath('src')
       );
     }
   },

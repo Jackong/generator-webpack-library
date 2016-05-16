@@ -2,7 +2,7 @@ var gulp = require('gulp')
 var webpack = require('webpack-stream')
 
 gulp.task('webpack', function() {
-    return gulp.src('./index.jsx')
+    return gulp.src('./src/index.js')
         .pipe(webpack(require('./webpack.config')))
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest('./dist/'));
 });

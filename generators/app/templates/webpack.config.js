@@ -1,4 +1,15 @@
 var webpack = require('webpack')
+const DEBUG = process.env.NODE_ENV !== 'production'
+
+const plugins = []
+if (!DEBUG) {
+  plugins.push(new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+          warnings: false
+      }
+  }))
+}
+
 module.exports = {
     output: {
         library: '<%= appname %>',
@@ -8,7 +19,7 @@ module.exports = {
     },
     module: {
         loaders: [{
-            test: /\.jsx$/,
+            test: /\.js$/,
             exclude: /node_modules/,
             loader: 'babel'
         }]
@@ -19,11 +30,5 @@ module.exports = {
     node: {
         Buffer: false
     },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                warnings: false
-            }
-        })
-    ]
+    plugins: plugins,
 };
